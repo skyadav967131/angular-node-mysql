@@ -1,0 +1,40 @@
+<div>
+  <h1>My Products</h1>
+  <form [formGroup]="productForm" (ngSubmit)="post(productForm.value)">
+    
+    <label for="Id">Id: </label>
+    <input id="Id" type="text" formControlName="Id">
+
+    <label for="Item">Name: </label>
+    <input id="Item" type="text" formControlName="Item">
+
+    <label for="Price">Price: </label>
+    <input id="Price" type="text" formControlName="Price">
+  
+    <label for="Quantity">Quantity: </label>
+    <input id="Quantity" type="text" formControlName="Quantity">
+    <button type="submit">submit</button>
+  </form>
+  <table>
+      <thead>
+          <tr>
+              <th>Product Id</th>
+              <th>Product Name</th>
+              <th>Price</th>                          
+              <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let product of groceries$|async">
+              <td>{{product.Id}}</td>
+              <td>{{product.Item}}</td>
+              <td>{{product.Price}}</td>
+              <td>{{product.Quantity}}</td>
+              <td>
+                  <button type="button" (click)="update()">Update</button>
+                  <button type="button" (click)="delete(product.Id)">Delete</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
